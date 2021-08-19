@@ -9,16 +9,27 @@ public class ChangeText {
         }
 
         removeC();
-        removeADoubleLatter();
+        removeADoubleLetter();
         removeEAtTheEndOfWord();
         removeArticle();
+    }
+
+    protected ChangeText(){}
+
+    public void setSourceText(String sourceText) {
+        this.sourceText = sourceText;
     }
 
     public String getSourceText() {
         return sourceText;
     }
 
-    private void removeC(){
+    protected void setSourceStrings() {
+        if(!sourceText.isEmpty())
+            sourceStrings = sourceText.split(" ");
+    }
+
+    protected void removeC(){
         StringBuilder sB = new StringBuilder(sourceText);
         while (sB.indexOf("c") >= 0){
             for (int i = 0, j = i+1; i < sB.length() && j<sB.length(); i++, j++) {
@@ -35,7 +46,7 @@ public class ChangeText {
         System.out.println(sourceText+"\n");
     }
 
-    private void removeADoubleLatter(){
+    protected void removeADoubleLetter(){
         StringBuilder sB = new StringBuilder(sourceText);
         for (int i = 0, j = i+1; i < sB.length() && j < sB.length(); i++, j++) {
             if(sB.charAt(i) == sB.charAt(j)){
@@ -51,7 +62,7 @@ public class ChangeText {
         System.out.println(sourceText+"\n");
     }
 
-    private void removeEAtTheEndOfWord(){
+    protected void removeEAtTheEndOfWord(){
         String[] strings = sourceText.split(" ");
         String newString = "";
         for(String str : strings){
@@ -64,7 +75,7 @@ public class ChangeText {
         System.out.println(sourceText+"\n");
     }
 
-    private void removeArticle(){
+    protected void removeArticle(){
         String[] strings = sourceText.split(" ");
         String newString = "";
         for (int i = 0;i< strings.length;i++) {
@@ -72,7 +83,7 @@ public class ChangeText {
                   continue;
               else newString +=strings[i]+" ";
         }
-        sourceText = newString;
+        sourceText = newString.trim();
         System.out.println(sourceText);
     }
 }
