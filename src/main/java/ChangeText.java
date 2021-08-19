@@ -1,9 +1,13 @@
 public class ChangeText {
     private String sourceText;
+    private String [] sourceStrings;
 
     public ChangeText(String sourceText){
-        if(!sourceText.isEmpty())
-        this.sourceText = sourceText;
+        if(!sourceText.isEmpty()) {
+            this.sourceText = sourceText;
+            sourceStrings = sourceText.split(" ");
+        }
+
         removeC();
         removeADoubleLatter();
         removeEAtTheEndOfWord();
@@ -14,7 +18,7 @@ public class ChangeText {
         return sourceText;
     }
 
-    void removeC(){
+    private void removeC(){
         StringBuilder sB = new StringBuilder(sourceText);
         while (sB.indexOf("c") >= 0){
             for (int i = 0, j = i+1; i < sB.length() && j<sB.length(); i++, j++) {
@@ -28,9 +32,10 @@ public class ChangeText {
             }
         }
         sourceText = sB.toString();
+        System.out.println(sourceText+"\n");
     }
 
-    void removeADoubleLatter(){
+    private void removeADoubleLatter(){
         StringBuilder sB = new StringBuilder(sourceText);
         for (int i = 0, j = i+1; i < sB.length() && j < sB.length(); i++, j++) {
             if(sB.charAt(i) == sB.charAt(j)){
@@ -43,9 +48,10 @@ public class ChangeText {
             }
         }
         sourceText = sB.toString();
+        System.out.println(sourceText+"\n");
     }
 
-    void removeEAtTheEndOfWord(){
+    private void removeEAtTheEndOfWord(){
         String[] strings = sourceText.split(" ");
         String newString = "";
         for(String str : strings){
@@ -55,16 +61,18 @@ public class ChangeText {
             newString += str + " ";
         }
         sourceText = newString.trim();
+        System.out.println(sourceText+"\n");
     }
 
-    void removeArticle(){
+    private void removeArticle(){
         String[] strings = sourceText.split(" ");
         String newString = "";
-        for (String str : strings) {
-              if(str.equals("an") || str.equals("a") || str.equals("th"))
+        for (int i = 0;i< strings.length;i++) {
+              if(sourceStrings[i].equals("an") || sourceStrings[i].equals("a") || sourceStrings[i].equals("the"))
                   continue;
-              else newString +=str+" ";
+              else newString +=strings[i]+" ";
         }
         sourceText = newString;
+        System.out.println(sourceText);
     }
 }
