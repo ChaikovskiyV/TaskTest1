@@ -1,4 +1,4 @@
-public class ITRexTask1 {
+public class MainTask1 {
     public static String str = "I want to be a successful programmer.\n" +
                                "I understand the goal I am striving for requires some effort.\n"+
                                "I am ready to use every opportunity to achieve my goal.\n" +
