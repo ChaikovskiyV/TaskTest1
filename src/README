@@ -49,5 +49,4 @@ sukses
 Solution of this task.
 The class ChangeText includes logic of this task solution.
 The class MainTask1 shows the execution of code.
-Also you can create new object of the class ChangeText with your parameters.
-The class ChangeTextTest contains the tests of every methods of the ChangeText class.
+The classes TextRedactorTest and ReaderFromFileTest contain the tests of working methods.
